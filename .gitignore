@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# tools
+/tools/base
+/tools/detail
+/tools/meta
+/tools/pictures
+/tools/*.json
+/tools/*.jpg
