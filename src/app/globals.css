@@ -2,26 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #ffffff;
+  --background: #0D1B2A;
+  --light-gray: #ADB5BD;
+  --charcoal-black: #1B1B1B;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground: #ffffff;
+    --background: #0D1B2A;
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Inter, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+@layer components {
+    .h2 {
+        @apply text-2xl font-semibold  mb-4 font-montserrat;
+    }
+    .item-list {
+        @apply flex items-center mb-4;
+    }
+    .item {
+        @apply flex-none w-[18vw]  hover:border m-[0.7vw] hover:border-gold/80 hover:border-2 hover:scale-105 transition-transform duration-300;
+    }
+    .item-pic {
+        @apply w-full aspect-[2/3]  bg-cover bg-center;
+    }
+    .item-info-container {
+        @apply relative
+    }
+    .item-info {
+        @apply absolute bottom-0 left-0 w-full bg-gradient-to-t from-black to-transparent p-3 pt-20;
+    }
+    .item-title {
+        @apply text-lg font-semibold;
+    }
+    .item-misc {
+        @apply text-stone-400;
+    }
+    .item-price {
+        @apply text-gold-400;
+    }
+    .btn-gold {
+        @apply flex-auto text-gold-800 bg-gold hover:bg-gold-400 hover:text-gold-700 font-medium text-sm px-4 py-2;
+    }
 }
