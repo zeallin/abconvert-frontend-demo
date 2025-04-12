@@ -1,4 +1,5 @@
 "use client";
+import { Poster } from "@/types/dataTypes";
 import {
   Dialog,
   DialogBackdrop,
@@ -11,9 +12,11 @@ import Link from "next/link";
 interface ModalDialogProp {
   isOpen: boolean;
   onClose: () => void;
+  children?: React.ReactNode;
+  poster?: Poster;
 }
 
-export const ModalDialog = ({ isOpen, onClose }: ModalDialogProp) => {
+export const ModalDialog = ({ poster, isOpen, onClose }: ModalDialogProp) => {
   return (
     <Dialog
       open={isOpen}
@@ -23,7 +26,7 @@ export const ModalDialog = ({ isOpen, onClose }: ModalDialogProp) => {
     >
       <DialogBackdrop className="fixed inset-0 bg-black/50" />
       <div className="fixed inset-0 flex w-screen items-center justify-center">
-        <DialogPanel className="max-w-lg  border-gold/80 border-2 bg-background p-2">
+        <DialogPanel className="max-w-lg  border-gold/80 border-1 bg-background p-2">
           <div className="relative">
             <X
               className="absolute top-0 right-0 cursor-pointer"
@@ -36,7 +39,23 @@ export const ModalDialog = ({ isOpen, onClose }: ModalDialogProp) => {
             <DialogTitle className="text-2xl text-center">
               Added to cart, great choice!
             </DialogTitle>
-            <div className="flex p-4"></div>
+            <div className="flex gap-4 py-4">
+              <div className="w-1/2">
+                <img
+                  alt={poster?.name ?? "unknown"}
+                  className="w-full"
+                  src={`/pictures/thumb/${poster?.thumbPath}`}
+                />
+              </div>
+              <div className="w-1/2">
+                <div className="text-2xl font-semibold">{poster?.name}</div>
+                <div className="text-gold-400 mt-4">${poster?.price} USD</div>
+                <div className="text-stone-400">{poster?.year}</div>
+                <div className="text-stone-400">
+                  {poster?.sizeWidthInch}&quot; × {poster?.sizeHeightInch}&quot;
+                </div>
+              </div>
+            </div>
             <div className="flex gap-4">
               <button className="btn-gold" onClick={onClose}>
                 Keep shopping

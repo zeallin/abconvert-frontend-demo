@@ -9,7 +9,7 @@ interface ItemProp {
 export const PosterItem = ({ poster }: ItemProp) => {
   return (
     <div className="item">
-      <Link href={`/poster/{${poster.id.toLowerCase()}}`}>
+      <Link href={`/poster/${poster.id.toLowerCase()}`}>
         <div
           style={{
             backgroundImage: `url('/pictures/thumb/${poster.thumbPath}')`,

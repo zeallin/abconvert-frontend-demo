@@ -1,6 +1,6 @@
 "use client";
 
-import { useCartAction, useModal } from "../app/context/CartContext";
+import { useCartAction, useModal } from "../context/CartContext";
 import { Poster } from "../types/dataTypes";
 // import { ModalDialog } from "./Modal";
 
@@ -17,7 +17,7 @@ export const BtnAddToCart = ({ poster }: BtnAddToCartProp) => {
       <button
         onClick={() => {
           addCartItem(poster, 1);
-          setModalOpen(true);
+          setModalOpen(true, poster);
         }}
         className="w-full mt-1 text-center p-2 bg-gold-800 text-gold hover:bg-gold-400 hover:text-gold-700"
       >

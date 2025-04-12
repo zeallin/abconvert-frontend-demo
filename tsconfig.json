@@ -17,8 +17,14 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".", // Must be set to root directory
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"], // Maps @/ to project root
+      "@/components/*": ["./src/components/*"],
+      "@/lib/*": ["./src/lib/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/context/*": ["./src/context/*"],
+      "@/types/*": ["./src/types/*"]
     }
   },
   "include": [
@@ -26,7 +32,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/context/CartContext.tss"
+    "src/context/CartContext.tss"
   ],
   "exclude": ["node_modules"]
 }

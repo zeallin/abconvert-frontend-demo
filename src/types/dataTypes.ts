@@ -1,13 +1,13 @@
 export interface Poster {
   id: string;
   name: string;
-  year: number;
+  year: number | null;
   thumbPath: string;
   imagePath: string;
   sizeWidthInch: number;
   sizeHeightInch: number;
   price: number;
-  desc: string;
+  desc: string | null;
   category: string[];
   color: string[];
 }
@@ -20,3 +20,5 @@ export interface CartItem {
   poster: Poster;
   quantity: number;
 }
+
+export type QueryParam = { [key: string]: string | string[] | undefined };

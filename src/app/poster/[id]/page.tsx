@@ -1,11 +1,8 @@
-import MainContainer from "../../../components/MainContainer";
-import TopNav from "../../../components/TopNav";
+import { PagePosterSingle } from "@/components/pages/PagePosterSingle";
 
-export default function Poster() {
-  return (
-    <>
-      <TopNav />
-      <MainContainer>Poster</MainContainer>
-    </>
-  );
-}
+export const PosterSingle = ({ params }: { params: { id: string } }) => {
+  const { id } = params;
+  return <PagePosterSingle id={id} />;
+};
+
+export default PosterSingle;

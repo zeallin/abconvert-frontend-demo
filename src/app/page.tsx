@@ -1,16 +1,7 @@
-import Footer from "../components/Footer";
-import MainContainer from "../components/MainContainer";
-import { PickedList } from "../components/PickedList";
-import TopNav from "../components/TopNav";
+import { PageHome } from "@/components/pages/PageHome";
 
-export default function Home() {
-  return (
-    <>
-      <TopNav />
-      <MainContainer>
-        <PickedList />
-      </MainContainer>
-      <Footer />
-    </>
-  );
-}
+export const Home = () => {
+  return <PageHome />;
+};
+
+export default Home;

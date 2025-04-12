@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { CartProvider } from "./context/CartContext";
+import { CartProvider } from "../context/CartContext";
 import "./globals.css";
 
 // const geistSans = localFont({
@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-black">
-        <div className="bg-background">
+        <div className="min-h-screen bg-[radial-gradient(closest-corner_at_top_right,#51596b,#0D1B2A)]">
           <CartProvider> {children}</CartProvider>
         </div>
       </body>

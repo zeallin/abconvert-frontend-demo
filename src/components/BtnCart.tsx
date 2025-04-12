@@ -4,14 +4,14 @@ import { ShoppingCart } from "@phosphor-icons/react";
 
 import Link from "next/link";
 import { useState } from "react";
-import { useCart } from "../app/context/CartContext";
+import { useCart } from "../context/CartContext";
 
 export const BtnCart = () => {
   const { count } = useCart();
   const [isModalOpen, setIsModalOpen] = useState(true);
   return (
     <Link href={`/cart`}>
-      <ShoppingCart color="#E6B800" size="40" />
+      <ShoppingCart color="#E6B800" size="35" />
       {count > 0 && (
         <div className="relative">
           <div className="absolute bg-gold-700 text-white bottom-0 left-6 rounded-full px-2 text-right">

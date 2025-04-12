@@ -36,10 +36,10 @@ body {
         @apply text-2xl font-semibold  mb-4 font-montserrat;
     }
     .item-list {
-        @apply flex items-center mb-4;
+        @apply flex flex-wrap gap-y-10 items-center mb-4;
     }
     .item {
-        @apply flex-none w-[18vw]  hover:border m-[0.7vw] hover:border-gold/80 hover:border-2 hover:scale-105 transition-transform duration-300;
+        @apply flex-none w-[17.5vw]  hover:border m-[0.7vw] hover:border-gold/80 hover:border-1 hover:scale-105 transition-transform duration-300;
     }
     .item-pic {
         @apply w-full aspect-[2/3]  bg-cover bg-center;
