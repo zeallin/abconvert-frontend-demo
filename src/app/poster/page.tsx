@@ -7,10 +7,8 @@ interface PosterSearchProps {
   searchParams: QueryParam;
 }
 
-export const PosterSearch = ({ searchParams }: PosterSearchProps) => {
+export default function PosterSearch({ searchParams }: PosterSearchProps) {
   const searchParam: PosterSearchFilters =
     QueryParamHelper.getPosterSearchFilters(searchParams);
   return <PagePosterSearch {...searchParam} />;
-};
-
-export default PosterSearch;
+}

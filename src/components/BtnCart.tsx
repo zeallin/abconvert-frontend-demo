@@ -3,12 +3,11 @@
 import { ShoppingCart } from "@phosphor-icons/react";
 
 import Link from "next/link";
-import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 export const BtnCart = () => {
   const { count } = useCart();
-  const [isModalOpen, setIsModalOpen] = useState(true);
+
   return (
     <Link href={`/cart`}>
       <ShoppingCart color="#E6B800" size="35" />
