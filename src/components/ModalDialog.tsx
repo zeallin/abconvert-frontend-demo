@@ -7,6 +7,7 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import { X } from "@phosphor-icons/react/dist/ssr";
+import Image from "next/image";
 import Link from "next/link";
 
 interface ModalDialogProp {
@@ -41,7 +42,9 @@ export const ModalDialog = ({ poster, isOpen, onClose }: ModalDialogProp) => {
             </DialogTitle>
             <div className="flex gap-4 py-4">
               <div className="w-1/2">
-                <img
+                <Image
+                  width={1024}
+                  height={1024}
                   alt={poster?.name ?? "unknown"}
                   className="w-full"
                   src={`/pictures/thumb/${poster?.thumbPath}`}
