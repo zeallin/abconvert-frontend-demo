@@ -30,7 +30,7 @@ export const CheckoutDetail = () => {
       </div>
     );
 
-  const submitForm = (formData: FormData) => {
+  const submitForm = () => {
     // just clear the cart item and go to success
     clearCartItem();
     router.push("/order-success");

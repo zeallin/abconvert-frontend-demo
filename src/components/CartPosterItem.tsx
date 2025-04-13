@@ -35,7 +35,7 @@ export const CartPosterItem = ({ cartItem }: CartItemProps) => {
 
           <div className="flex items-center border-1 border-gold-600 text-lg mt-4 w-48">
             <button
-              onClick={(e) => {
+              onClick={() => {
                 removeCartItem(poster, 1);
               }}
               className="flex-none px-2 py-1 bg-gold-800 text-gold hover:bg-gold-400 hover:text-gold-700 "
@@ -47,7 +47,7 @@ export const CartPosterItem = ({ cartItem }: CartItemProps) => {
               {quantity}
             </div>
             <button
-              onClick={(e) => {
+              onClick={() => {
                 addCartItem(poster, 1);
               }}
               className="flex-none px-2 py-1 bg-gold-800 text-gold hover:bg-gold-400 hover:text-gold-700"
@@ -66,7 +66,7 @@ export const CartPosterItem = ({ cartItem }: CartItemProps) => {
           <div className="flex">
             <button
               className="btn-gold"
-              onClick={(e) => {
+              onClick={() => {
                 removeCartItem(poster, 0);
               }}
             >

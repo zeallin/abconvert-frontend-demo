@@ -3,9 +3,7 @@ import Footer from "../Footer";
 import MainContainer from "../MainContainer";
 import TopNav from "../TopNav";
 
-interface PageOrderSuccessProps {}
-
-export const PageOrderSuccess = ({}: PageOrderSuccessProps) => {
+export const PageOrderSuccess = () => {
   return (
     <div className="flex flex-col min-h-screen">
       <TopNav isCleanMode={true} />

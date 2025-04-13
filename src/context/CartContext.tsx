@@ -94,7 +94,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, []);
 
   const clearCartItem = useCallback(() => {
-    setCartItems((prev) => {
+    setCartItems(() => {
       LocalStoreageMgr.setItems(cartItemKey, []);
       return [];
     });

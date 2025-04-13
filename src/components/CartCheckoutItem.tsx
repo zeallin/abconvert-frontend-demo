@@ -1,4 +1,3 @@
-import { useCartAction } from "@/context/CartContext";
 import Image from "next/image";
 import { CartItem } from "../types/dataTypes";
 
@@ -7,7 +6,6 @@ interface CartCheckoutItemProps {
 }
 
 export const CartCheckoutItem = ({ cartItem }: CartCheckoutItemProps) => {
-  const { addCartItem, removeCartItem } = useCartAction();
   const poster = cartItem.poster;
   const quantity = cartItem.quantity;
 

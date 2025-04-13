@@ -4,9 +4,7 @@ import Footer from "../Footer";
 import MainContainer from "../MainContainer";
 import TopNav from "../TopNav";
 
-interface PageCartProps {}
-
-export const PageCart = ({}: PageCartProps) => {
+export const PageCart = () => {
   const referrer = "/"; // Fallback to homepage if no referrer
 
   return (

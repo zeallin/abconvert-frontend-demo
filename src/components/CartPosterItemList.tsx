@@ -41,7 +41,7 @@ export const CartPosterItemList = () => {
         <div className="text-right">
           <div className="text-2xl my-4">Total: ${totalPrice} USD</div>
           <button
-            onClick={(e) => {
+            onClick={() => {
               router.push(`/checkout`);
             }}
             className="w-48 text-xl mt-1 text-center p-2 bg-gold-800 text-gold hover:bg-gold-400 hover:text-gold-700"
