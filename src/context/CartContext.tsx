@@ -23,7 +23,11 @@ interface CartActionContextType {
   removeCartItem: (poster: Poster, quantity: number) => void;
 }
 interface ModalContextType {
-  setModalOpen: (isModalOpen: boolean, poster?: Poster) => void;
+  setModalOpen: (
+    isModalOpen: boolean,
+    poster?: Poster,
+    quantity?: number
+  ) => void;
 }
 
 const cartItemKey = "myCart";
@@ -40,7 +44,7 @@ const ModalContext = createContext<ModalContextType | undefined>(undefined);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [addedPoster, setAddedPoster] = useState<Poster>();
+  const [addedCartItem, setAddedCartItem] = useState<CartItem>();
 
   // delay load for client depedency
   useEffect(() => setCartItems(LocalStoreageMgr.getItems(cartItemKey)), []);
@@ -73,16 +77,21 @@ export function CartProvider({ children }: { children: ReactNode }) {
     });
   }, []);
 
-  const setModalOpen = useCallback((isOpen: boolean, poster?: Poster) => {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    setIsModalOpen((prev) => {
-      if (Checker.isSetNonNull(poster)) {
-        setAddedPoster(poster);
-      }
+  const setModalOpen = useCallback(
+    (isOpen: boolean, poster?: Poster, quantity = 1) => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      setIsModalOpen((prev) => {
+        if (Checker.isSetNonNull(poster)) {
+          const checkedPoster = poster as Poster;
+          const addCartItem: CartItem = { poster: checkedPoster, quantity };
+          setAddedCartItem(addCartItem);
+        }
 
-      return isOpen;
-    });
-  }, []);
+        return isOpen;
+      });
+    },
+    []
+  );
 
   const count = cartItems.reduce((itemCount, cartItem) => {
     return itemCount + cartItem.quantity;
@@ -101,7 +110,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           <ModalDialog
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
-            poster={addedPoster}
+            addedCartItem={addedCartItem}
           ></ModalDialog>
         </CartActionContext.Provider>
       </CartStateContext.Provider>

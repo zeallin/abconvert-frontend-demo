@@ -6,9 +6,10 @@ import { Poster } from "../types/dataTypes";
 
 interface BtnAddToCartProp {
   poster: Poster;
+  quantity?: number;
 }
 
-export const BtnAddToCart = ({ poster }: BtnAddToCartProp) => {
+export const BtnAddToCart = ({ poster, quantity = 1 }: BtnAddToCartProp) => {
   const { addCartItem } = useCartAction();
   const { setModalOpen } = useModal();
 
@@ -16,8 +17,8 @@ export const BtnAddToCart = ({ poster }: BtnAddToCartProp) => {
     <>
       <button
         onClick={() => {
-          addCartItem(poster, 1);
-          setModalOpen(true, poster);
+          addCartItem(poster, quantity);
+          setModalOpen(true, poster, quantity);
         }}
         className="w-full mt-1 text-center p-2 bg-gold-800 text-gold hover:bg-gold-400 hover:text-gold-700"
       >
