@@ -1,11 +1,5 @@
-import MainContainer from "../../components/MainContainer";
-import TopNav from "../../components/TopNav";
+import PageCart from "@/components/pages/PageCart";
 
 export default function Cart() {
-  return (
-    <>
-      <TopNav />
-      <MainContainer>My Cart</MainContainer>
-    </>
-  );
+  return <PageCart />;
 }

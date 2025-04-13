@@ -2,7 +2,6 @@
 
 import { useCartAction, useModal } from "../context/CartContext";
 import { Poster } from "../types/dataTypes";
-// import { ModalDialog } from "./Modal";
 
 interface BtnAddToCartProp {
   poster: Poster;

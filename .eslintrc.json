@@ -2,6 +2,7 @@
   "extends": ["next/core-web-vitals", "next/typescript"],
   "plugins": ["import"],
   "rules": {
-    "import/no-relative-packages": "warn"
+    "import/no-relative-packages": "warn",
+    "@next/next/no-page-custom-font": "off"
   }
 }

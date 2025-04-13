@@ -21,6 +21,7 @@ interface CartStateContextType {
 interface CartActionContextType {
   addCartItem: (poster: Poster, quantity: number) => void;
   removeCartItem: (poster: Poster, quantity: number) => void;
+  clearCartItem: () => void;
 }
 interface ModalContextType {
   setModalOpen: (
@@ -64,16 +65,38 @@ export function CartProvider({ children }: { children: ReactNode }) {
         updatedCart = [...prev, { poster, quantity }];
       }
 
-      LocalStoreageMgr.setItems(cartItemKey, updatedCart);
+      LocalStoreageMgr.setItems(cartItemKey, updatedCart.sort());
       return updatedCart;
     });
   }, []);
 
-  const removeCartItem = useCallback((poster: Poster) => {
+  const removeCartItem = useCallback((poster: Poster, quantity: number) => {
     setCartItems((prev) => {
-      const updatedCart = prev.filter((item) => item.poster.id !== poster.id);
-      LocalStoreageMgr.setItems(cartItemKey, updatedCart);
+      const idx = prev.findIndex((item) => item.poster.id === poster.id);
+      if (idx === -1) return prev;
+
+      const existing = prev[idx];
+      let updatedCart: CartItem[];
+
+      if (quantity === 0 || existing.quantity <= quantity) {
+        updatedCart = prev.filter((item, index) => index !== idx);
+      } else {
+        updatedCart = prev.map((item) =>
+          item.poster.id === poster.id
+            ? { ...item, quantity: item.quantity - quantity }
+            : item
+        );
+      }
+
+      LocalStoreageMgr.setItems(cartItemKey, updatedCart.sort());
       return updatedCart;
+    });
+  }, []);
+
+  const clearCartItem = useCallback(() => {
+    setCartItems(() => {
+      LocalStoreageMgr.setItems(cartItemKey, []);
+      return [];
     });
   }, []);
 
@@ -98,8 +121,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
   }, 0);
 
   const actions = useMemo(
-    () => ({ addCartItem, removeCartItem }),
-    [addCartItem, removeCartItem]
+    () => ({ addCartItem, removeCartItem, clearCartItem }),
+    [addCartItem, removeCartItem, clearCartItem]
   );
 
   return (

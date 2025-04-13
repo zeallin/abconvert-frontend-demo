@@ -126,7 +126,7 @@ PaginationProps) => {
         ) : (
           <button
             key={page}
-            onClick={() => handlePageClick(page)}
+            onClick={() => handlePageClick(page as number)}
             className={` bg-gold hover:bg-gold-400 hover:text-gold-700 px-4 py-2 ${
               pageNo === page
                 ? "text-gold-800 bg-gold"
