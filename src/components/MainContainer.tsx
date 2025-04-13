@@ -3,7 +3,7 @@ interface MainContainerProp {
 }
 
 export const MainContainer = ({ children }: MainContainerProp) => {
-  return <div className="p-4">{children}</div>;
+  return <div className="flex-1 p-4 ">{children}</div>;
 };
 
 export default MainContainer;
