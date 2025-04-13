@@ -1,5 +1,5 @@
-import BtnAddToCart from "@/components/BtnAddToCart";
 import PosterItemList from "@/components/PosterItemList";
+import QuantityAddToCart from "@/components/QuantityAddToCart";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { PosterService } from "../services/posterService";
@@ -38,8 +38,7 @@ export const PosterDetail = async ({ id }: PosterDetailProps) => {
             <div className="item-misc text-xl pb-4">
               {poster.sizeWidthInch}&quot; × {poster.sizeHeightInch}&quot;
             </div>
-
-            <BtnAddToCart poster={poster} />
+            <QuantityAddToCart poster={poster} />
           </div>
         </div>
       </div>

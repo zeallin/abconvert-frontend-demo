@@ -1,5 +1,5 @@
 "use client";
-import { Poster } from "@/types/dataTypes";
+import { CartItem } from "@/types/dataTypes";
 import {
   Dialog,
   DialogBackdrop,
@@ -14,10 +14,17 @@ interface ModalDialogProp {
   isOpen: boolean;
   onClose: () => void;
   children?: React.ReactNode;
-  poster?: Poster;
+  addedCartItem?: CartItem;
 }
 
-export const ModalDialog = ({ poster, isOpen, onClose }: ModalDialogProp) => {
+export const ModalDialog = ({
+  addedCartItem,
+  isOpen,
+  onClose,
+}: ModalDialogProp) => {
+  const poster = addedCartItem?.poster;
+  const quantity = addedCartItem?.quantity ?? 1;
+
   return (
     <Dialog
       open={isOpen}
@@ -52,10 +59,15 @@ export const ModalDialog = ({ poster, isOpen, onClose }: ModalDialogProp) => {
               </div>
               <div className="w-1/2">
                 <div className="text-2xl font-semibold">{poster?.name}</div>
-                <div className="text-gold-400 mt-4">${poster?.price} USD</div>
+                <div className="text-lg text-gold-400 mt-4">
+                  ${poster?.price} USD
+                </div>
                 <div className="text-stone-400">{poster?.year}</div>
                 <div className="text-stone-400">
                   {poster?.sizeWidthInch}&quot; × {poster?.sizeHeightInch}&quot;
+                </div>
+                <div className="text-white text-lg pt-2">
+                  Quantity: {quantity}
                 </div>
               </div>
             </div>
