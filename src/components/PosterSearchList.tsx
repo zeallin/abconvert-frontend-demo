@@ -1,3 +1,4 @@
+import Pagination from "@/components/Pagination";
 import { PosterSearchFilters, PosterService } from "@/services/posterService";
 import Checker from "@/utils/checker";
 import PosterItemList from "./PosterItemList";
@@ -15,6 +16,12 @@ export const PosterSearchList = async (props: PosterSearchListProp) => {
   return (
     <>
       <PosterItemList title={title} posters={searchResults.items} />
+      <Pagination
+        pageCount={searchResults.pageCount}
+        pageNo={searchResults.pageNo}
+        pageUrl="./poster"
+        searchFilter={props}
+      />
     </>
   );
 };

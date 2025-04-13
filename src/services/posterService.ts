@@ -125,6 +125,8 @@ function searchPosters({
 
   result.itemCount = totalCount;
   result.items = paginatedResults;
+  result.pageNo = pageNo;
+  result.pageCount = Math.ceil(totalCount / pageSize);
 
   return result;
 }
